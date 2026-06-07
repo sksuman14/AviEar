@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Hexagon, Activity, Play, Pause, Waves, ArrowLeft } from 'lucide-react';
+import { Hexagon, Activity, Waves, ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import devicesData from '../data/devices.json';
 import '../index.css';

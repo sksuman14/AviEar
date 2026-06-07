@@ -1,4 +1,4 @@
-import { ArrowRight, Cpu, MemoryStick, ActivitySquare, ArrowLeft, BarChart3, Cloud, Shield } from 'lucide-react';
+import { ArrowRight, Cpu, MemoryStick, ActivitySquare, BarChart3, Cloud, Shield } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import './Home.css';
 import aviearDevice from '../assets/aviear_device.png';
