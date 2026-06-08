@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Hexagon, Activity, Waves, ArrowLeft } from 'lucide-react';
+import { Hexagon, Activity, Play, Pause, Waves, ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import devicesData from '../data/devices.json';
 import '../index.css';
@@ -18,13 +18,12 @@ interface Device {
 export default function App() {
   const devices = devicesData as Device[];
   const [selectedDevice, setSelectedDevice] = useState<Device | null>(null);
-  const [playingSegment, setPlayingSegment] = useState<string | null>(null);
-
-  const handlePlay = (segmentUrl: string) => {
-    if (playingSegment === segmentUrl) {
-      setPlayingSegment(null);
-    } else {
-      setPlayingSegment(segmentUrl);
+  const handlePlay = (e: React.SyntheticEvent<HTMLAudioElement>) => {
+    const audios = document.getElementsByTagName('audio');
+    for (let i = 0; i < audios.length; i++) {
+      if (audios[i] !== e.currentTarget) {
+        audios[i].pause();
+      }
     }
   };
 
@@ -79,7 +78,7 @@ export default function App() {
                       <audio 
                         controls 
                         src={segment.url} 
-                        onPlay={() => handlePlay(segment.url)}
+                        onPlay={handlePlay}
                       />
                     </div>
                   </div>
