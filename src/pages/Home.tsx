@@ -1,8 +1,27 @@
 import { ArrowRight, Cpu, MemoryStick, ActivitySquare, BarChart3, Cloud, Shield } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import './Home.css';
+import '../App.css';
 import aviearDevice from '../assets/aviear_device.png';
 import aviearAssembly from '../assets/aviear_assembly.png';
+import img1 from '../assets/images/1.jpeg';
+import img2 from '../assets/images/2.jpeg';
+import img3 from '../assets/images/3.jpeg';
+import img4 from '../assets/images/4.jpeg';
+import img5 from '../assets/images/5.jpeg';
+import img6 from '../assets/images/6.jpeg';
+import img7 from '../assets/images/7.jpeg';
+
+const deploymentImages = [
+  { src: img1, alt: "Deployment Image 1", title: "Deployment 1" },
+  { src: img2, alt: "Deployment Image 2", title: "Deployment 2" },
+  { src: img3, alt: "Deployment Image 3", title: "Deployment 3" },
+  { src: img4, alt: "Deployment Image 4", title: "Deployment 4" },
+  { src: img5, alt: "Deployment Image 5", title: "Deployment 5" },
+  { src: img6, alt: "Deployment Image 6", title: "Deployment 6" },
+  { src: img7, alt: "Deployment Image 7", title: "Deployment 7" }
+];
+
 
 export default function Home() {
   const navigate = useNavigate();
@@ -15,9 +34,14 @@ export default function Home() {
           <ActivitySquare className="text-honey-primary" size={28} />
           <span>AviEar</span>
         </div>
-        <button className="nav-cta" onClick={() => navigate('/dashboard')}>
-          Live Data <ArrowRight size={18} />
-        </button>
+        <div className="nav-actions">
+          <ul className="nav-links">
+            <li><a href="#deployment" className="nav-link">Deployment</a></li>
+          </ul>
+          <button className="nav-cta" onClick={() => navigate('/dashboard')}>
+            Live Data <ArrowRight size={18} />
+          </button>
+        </div>
       </nav>
 
       {/* Hero Section */}
@@ -67,7 +91,7 @@ export default function Home() {
       </section>
 
       {/* Assembly Section */}
-      <section className="assembly-section">
+      <section id="assembly" className="assembly-section">
         <div className="assembly-visual">
           <img src={aviearAssembly} alt="AviEar Assembly" className="assembly-img" />
           <div className="glow-effect secondary"></div>
@@ -81,7 +105,7 @@ export default function Home() {
       </section>
 
       {/* Features Section */}
-      <section className="features-section">
+      <section id="capabilities" className="features-section">
         <h2 className="section-title text-center">Core Capabilities</h2>
         
         <div className="features-grid">
@@ -111,6 +135,27 @@ export default function Home() {
         </div>
       </section>
       
+
+
+      {/* Deployment Section */}
+      <section id="deployment" className="deployment-section">
+        <h2 className="section-title text-center">Deployment Scenarios</h2>
+        <p className="section-subtitle text-center">Visualizing real-world applications and installations.</p>
+        
+        <div className="deployment-grid">
+          {deploymentImages.map((img, idx) => (
+            <div key={idx} className="deployment-card">
+              <div className="image-wrapper">
+                <img src={img.src} alt={img.alt} className="deployment-img" />
+              </div>
+              <div className="deployment-info">
+                <h4>{img.title}</h4>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
       <footer className="home-footer">
         <p>© AviEar Acoustic Systems. All rights reserved.</p>
       </footer>
